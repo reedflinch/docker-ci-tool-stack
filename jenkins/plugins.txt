@@ -17,5 +17,6 @@ parameterized-trigger:2.29
 clone-workspace-scm:0.6
 chucknorris:0.9.1
 xvfb:1.1.2
+sonar:2.3
 ws-cleanup:0.28
 ansicolor:0.4.2
