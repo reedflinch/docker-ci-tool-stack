@@ -41,7 +41,7 @@ RUN set -x \
 	&& gpg --verify sonarqube.zip.asc \
 	&& unzip sonarqube.zip \
 	&& mv sonarqube-$SONAR_VERSION sonarqube \
-  && rm sonarqube.zip* \
+        && rm sonarqube.zip* \
 	&& rm -rf $SONARQUBE_HOME/bin/*
 
 # Installing Plugins
@@ -56,5 +56,12 @@ VOLUME ["$SONARQUBE_HOME/data", "$SONARQUBE_HOME/extensions"]
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
 RUN chmod +x $SONARQUBE_HOME/bin/run.sh
+
+# install sonar-runner
+RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.5.zip
+RUN unzip sonar-scanner-2.5.zip
+RUN rm sonar-scanner-2.5.zip
+RUN export SONAR_RUNNER_HOME=$SONARQUBE_HOME/sonar-scanner-2.5
+RUN export PATH=$PATH:$SONAR_RUNNER_HOME/bin
 
 ENTRYPOINT ["./bin/run.sh"]
