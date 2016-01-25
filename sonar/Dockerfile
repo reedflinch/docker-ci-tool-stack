@@ -16,13 +16,16 @@ ENV SONARQUBE_HOME /opt/sonarqube
 EXPOSE 9000
 
 # H2 Database port
-EXPOSE 9092
+#EXPOSE 9092
+# PostGres Database port
+EXPOSE 5432
 
 # Database configuration
 # Defaults to using H2
 ENV SONARQUBE_JDBC_USERNAME sonar
 ENV SONARQUBE_JDBC_PASSWORD sonar
-ENV SONARQUBE_JDBC_URL jdbc:h2:tcp://localhost:9092/sonar
+#ENV SONARQUBE_JDBC_URL jdbc:h2:tcp://localhost:9092/sonar
+ENV SONARQUBE_JDBC_URL jdbc:postgresql://localhost:5432/sonar
 
 ENV SONAR_VERSION 5.1.2
 
@@ -58,10 +61,10 @@ COPY run.sh $SONARQUBE_HOME/bin/
 RUN chmod +x $SONARQUBE_HOME/bin/run.sh
 
 # install sonar-runner
-RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.5.zip
-RUN unzip sonar-scanner-2.5.zip
-RUN rm sonar-scanner-2.5.zip
-RUN export SONAR_RUNNER_HOME=$SONARQUBE_HOME/sonar-scanner-2.5
-RUN export PATH=$PATH:$SONAR_RUNNER_HOME/bin
+#RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.5.zip
+#RUN unzip sonar-scanner-2.5.zip
+#RUN rm sonar-scanner-2.5.zip
+#RUN export SONAR_RUNNER_HOME=$SONARQUBE_HOME/sonar-scanner-2.5
+#RUN export PATH=$PATH:$SONAR_RUNNER_HOME/bin
 
 ENTRYPOINT ["./bin/run.sh"]
