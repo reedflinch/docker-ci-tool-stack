@@ -17,7 +17,7 @@ jenkins:
 db:
   container_name: db
   image: postgres
-  #net: container:sonar
+  net: container:sonar
   environment:
    - POSTGRES_USER=sonar
    - POSTGRES_PASSWORD=sonar
@@ -43,27 +43,27 @@ sonar-runner:
    - SONAR_JDBC_DRIVERCLASSNAME=org.postgresql.Driver
    - SONAR_EMBEDDEDDDATABASE_PORT=5432
 
-selhub:
-  container_name: selhub
-  image: selenium/hub
-  ports:
-    - "4444:4444"
+# selhub:
+#   container_name: selhub
+#   image: selenium/hub
+#   ports:
+#     - "4444:4444"
 
-nodeff:
-  container_name: nodeff
-  image: selenium/node-firefox-debug
-  ports:
-    - "5900"
-  # links:
-  #   - selhub:hub
+# nodeff:
+#   container_name: nodeff
+#   image: selenium/node-firefox-debug
+#   ports:
+#     - "5900"
+#   # links:
+#   #   - selhub:hub
 
-nodechrome:
-  container_name: nodechrome
-  image: selenium/node-chrome-debug
-  ports:
-    - "5900"
-  # links:
-  #   - selhub:hub
+# nodechrome:
+#   container_name: nodechrome
+#   image: selenium/node-chrome-debug
+#   ports:
+#     - "5900"
+#   # links:
+#   #   - selhub:hub
 
 # postgresql:
 #  image: sameersbn/postgresql:9.4-3
