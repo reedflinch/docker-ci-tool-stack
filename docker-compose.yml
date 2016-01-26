@@ -17,7 +17,6 @@ jenkins:
 db:
   container_name: db
   image: postgres
-  net: container:sonar
   environment:
    - POSTGRES_USER=sonar
    - POSTGRES_PASSWORD=sonar
@@ -42,7 +41,6 @@ sonar-runner:
    - SONAR_JDBC_PASSWORD=sonar
    - SONAR_JDBC_DRIVERCLASSNAME=org.postgresql.Driver
    - SONAR_EMBEDDEDDDATABASE_PORT=5432
-  net: container:sonar
 
 # selhub:
 #   container_name: selhub
