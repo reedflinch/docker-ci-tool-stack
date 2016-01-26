@@ -25,7 +25,7 @@ EXPOSE 5432
 ENV SONARQUBE_JDBC_USERNAME sonar
 ENV SONARQUBE_JDBC_PASSWORD sonar
 #ENV SONARQUBE_JDBC_URL jdbc:h2:tcp://localhost:9092/sonar
-ENV SONARQUBE_JDBC_URL jdbc:postgresql:tcp://localhost:5432/sonar
+#ENV SONARQUBE_JDBC_URL jdbc:postgresql:tcp://localhost:5432/sonar
 
 ENV SONAR_VERSION 5.1.2
 
