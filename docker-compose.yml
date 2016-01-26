@@ -9,10 +9,10 @@ jenkins:
   build: ./jenkins
   ports:
     - "8080:8080"
-  links:
-    - nexus:nexus
-    - sonar:sonar
-    - selhub:hub
+  # links:
+  #   - nexus:nexus
+  #   - sonar:sonar
+  #   - selhub:hub
 
 sonar:
   container_name: sonar
@@ -20,13 +20,13 @@ sonar:
   ports:
    - "9000:9000"
    - "5432:5432"
-  environment:
-   - SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
+  # environment:
+  #  - SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
 
 db:
   container_name: db
   image: postgres
-  net: container:sonar
+  #net: container:sonar
   environment:
    - POSTGRES_USER=sonar
    - POSTGRES_PASSWORD=sonar
@@ -35,23 +35,23 @@ selhub:
   container_name: selhub
   image: selenium/hub
   ports:
-    - 4444:4444
+    - "4444:4444"
 
 nodeff:
   container_name: nodeff
   image: selenium/node-firefox-debug
   ports:
-    - 5900
-  links:
-    - selhub:hub
+    - "5900"
+  # links:
+  #   - selhub:hub
 
 nodechrome:
   container_name: nodechrome
   image: selenium/node-chrome-debug
   ports:
-    - 5900
-  links:
-    - selhub:hub
+    - "5900"
+  # links:
+  #   - selhub:hub
 
 # postgresql:
 #  image: sameersbn/postgresql:9.4-3
