@@ -40,7 +40,7 @@ sonar-runner:
    - SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonar
    - SONAR_JDBC_USERNAME=sonar
    - SONAR_JDBC_PASSWORD=sonar
-   - SONAR_JDBC_DRIVERCLASSNAME=org.postgresq.Driver
+   - SONAR_JDBC_DRIVERCLASSNAME=org.postgresql.Driver
    - SONAR_EMBEDDEDDDATABASE_PORT=5432
 
 selhub:
