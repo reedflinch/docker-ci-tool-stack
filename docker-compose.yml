@@ -33,7 +33,7 @@ sonar:
 sonar-runner:
   container_name: sonar-runner
   #image: sebp/sonar-runner:latest
-  build: ./sonar-runner-docker
+  build: ./sonar-runner
   environment:
    - SONAR_USER_HOME=/data/.sonar-cache
    - SONAR_HOST_URL=http://sonar:9000
