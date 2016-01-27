@@ -18,6 +18,8 @@ RUN groupadd -r sonar \
  && mkdir -p /data \
  && chown -R sonar:sonar /data
 
+COPY sonar-runner.properties ${SONAR_RUNNER_HOME}/conf
+
 USER sonar
 WORKDIR /data
 
