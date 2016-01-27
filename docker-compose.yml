@@ -32,15 +32,14 @@ sonar:
 
 sonar-runner:
   container_name: sonar-runner
-  image: sebp/sonar-runner:latest
+  #image: sebp/sonar-runner:latest
+  build: ./sonar-runner-docker
   environment:
    - SONAR_USER_HOME=/data/.sonar-cache
-   - SONAR_HOST_URL=http://54.164.156.22:9000
+   - SONAR_HOST_URL=http://sonar:9000
    - SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonar
    - SONAR_JDBC_USERNAME=sonar
    - SONAR_JDBC_PASSWORD=sonar
-   - SONAR_JDBC_DRIVERCLASSNAME=org.postgresql.Driver
-   - SONAR_EMBEDDEDDDATABASE_PORT=5432
 
 # selhub:
 #   container_name: selhub
