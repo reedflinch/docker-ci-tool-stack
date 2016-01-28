@@ -23,11 +23,14 @@ COPY sonar-runner.properties ${SONAR_RUNNER_HOME}/conf
 USER sonar
 WORKDIR /data
 
+RUN mkdir final-exercise
 VOLUME /data
-VOLUME /home/ec2-user/final-exercise/:/data/final-exercise
+COPY final-exercise .
 
 #RUN chown -R sonar:sonar /data/.sonar-cache /data/.sonar
 
+RUN sleep 20
+
 # for debugging a long-running container
-ENTRYPOINT ping 54.164.156.22 -c 10000
-#ENTRYPOINT ${SONAR_RUNNER_HOME}/bin/sonar-runner
+#ENTRYPOINT ping 54.164.156.22 -c 10000
+ENTRYPOINT ${SONAR_RUNNER_HOME}/bin/sonar-runner
