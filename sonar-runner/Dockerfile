@@ -19,14 +19,15 @@ RUN groupadd -r sonar \
  && chown -R sonar:sonar /data
 
 COPY sonar-runner.properties ${SONAR_RUNNER_HOME}/conf
-COPY /final-exercise/ /data
-
-RUN chown -R sonar:sonar /data/.sonar-cache /data/.sonar
 
 USER sonar
 WORKDIR /data
 
 VOLUME /data
+VOLUME /home/ec2-user/final-exercise/:/data/final-exercise
 
-#ENTRYPOINT ping 54.164.156.22 -c 10000
-ENTRYPOINT ${SONAR_RUNNER_HOME}/bin/sonar-runner
+#RUN chown -R sonar:sonar /data/.sonar-cache /data/.sonar
+
+# for debugging a long-running container
+ENTRYPOINT ping 54.164.156.22 -c 10000
+#ENTRYPOINT ${SONAR_RUNNER_HOME}/bin/sonar-runner
