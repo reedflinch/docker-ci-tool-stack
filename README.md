@@ -2,7 +2,9 @@ To stand up Docker containers and perform a SonarQube scan on [a sample Node.js 
 
 * Clone the tool stack
 
-`$ git clone https://github.com/reedflnch/docker-ci-tool-stack.git`
+```
+$ git clone https://github.com/reedflnch/docker-ci-tool-stack.git
+```
 
 * Clone the application repository to the `sonar-runner` (SonarQube's scanning tool) directory:
 
