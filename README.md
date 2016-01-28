@@ -1,3 +1,22 @@
+To stand up Docker containers and perform a SonarQube scan on [a sample Node.js app](http://code.tutsplus.com/tutorials/setting-up-continuous-integration-continuous-deployment-with-jenkins--cms-21511) found in [this repository](https://github.com/aetas-github-training/final-exercise):
+
+* Clone the tool stack
+
+`$ git clone https://github.com/reedflnch/docker-ci-tool-stack.git`
+
+* Clone the application repository to the `sonar-runner` (SonarQube's scanning tool) directory:
+
+```
+$ git clone https://github.com/aetas-github-training/final-exercise.git ./docker-ci-tool-stack/sonar-runner/final-exercise
+```
+
+* Build the tool stack containers using 'docker-compose'
+
+```
+$ cd ..
+$ docker-compose --x-networking up -d
+```
+
 # CI Tools Demo
 
 This GitHub repository contains Dockerfiles for running a set of Continuous Integration Tools with a single command. The diagram contains all tools used in the Docker containers.
